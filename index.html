@@ -1,99 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicativo de comida</title>
+    <link rel="shortcut icon" href="./plant.svg"" type=" image/svg+xml">
+    <title>PowerPlant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preload" href="./css/style.css" as="style">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    <section class="menu">
+    <section class="menu container">
         <div class="nav">
-            <div class="logo"><h1>Power<b>Plant</b></h1></div>
-            <ul>
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Service</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Gallery</a></li>
+            <div class="logo">
+                <a href="./">
+                    <h1 class="font-1">Power<b>Plant</b></h1>
+                </a>
+            </div>
+            <ul class="active font-1">
+                <li><a href="./snack.html">Refeições</a></li>
+                <li><a href="./snacks.html">Lanches</a></li>
+                <li><a href="./desserts.html">Sobremesas</a></li>
+                <li><a href="./drinks.html">Bebidas</a></li>
             </ul>
             <div>
-                <input class="signin" type="submit" value="Sign In" name="signin">
-                <input class="signup" type="submit" value="Sign Up" name="signup">
+                <input class="signin font-1" type="submit" value="Entrar" name="signin">
+                <input class="signup font-1" type="submit" value="Cadastre-se" name="signup">
             </div>
         </div>
     </section>
-    <section class="grid">
+    <section class="grid container">
         <div class="content">
             <div class="content-left">
                 <div class="info">
-                    <h2>Order Your Best <br>Food anytime</h2>
-                    <p>Hey, Our delicious food is waiting for you, <br>
-                        We are always near to you with fresh item of food</p>
+                    <h2 class="font-1">Desfrute do melhor <br>da culinária.</h2>
+                    <p class="font-2 standard">Alimente seu corpo com o melhor da natureza e sinta a diferença em sua
+                        saúde e
+                        bem-estar!</p>
                 </div>
-                <button>Explore Food</button>
+                <button class="font-1">Explore Food</button>
             </div>
             <div class="content-right">
-                <img src="Food_Plate.png" alt="">
+                <img src="./img/Food_Plate.png" alt="">
             </div>
         </div>
     </section>
     <section class="category">
-        <div class="list-items">
-            <h3>Popular Dishes</h3>
+        <div class="list-items container">
+            <h3 class="font-1">Pratos Populares</h3>
             <div class="card-list">
                 <div class="card">
-                    <img class="card_img" src="food_icon2.PNG" alt="">
+                    <img class="card_img" src="./img/food_icon1.PNG" alt="">
                     <div class="food-title">
-                        <h1>Beef Burger</h1>
+                        <h1 class="font-1">Beef Burger</h1>
                     </div>
                     <div class="desc-food">
-                        <p>Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
+                        <p class="font-2">Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
                     </div>
-                    <div class="price">
-                        <span>$10.99</span><img class="plus-icon" src="plus-circle.png" alt="">
+                    <div class="font-2 price">
+                        <span>R$10.99</span><img class="plus-icon" src="./img/plus-circle.png" alt="">
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card_img" src="food_icon1.PNG" alt="">
+                    <img class="card_img" src="./img/food_icon2.PNG" alt="">
                     <div class="food-title">
-                        <h1>Beef Burger</h1>
+                        <h1 class="font-1">Beef Burger</h1>
                     </div>
                     <div class="desc-food">
-                        <p>Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
+                        <p class="font-2">Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
                     </div>
-                    <div class="price">
-                        <span>$10.99</span><span><img class="plus-icon" src="plus-circle.png" alt="">
+                    <div class="price font-2">
+                        <span>R$10.99</span><span><img class="plus-icon" src="./img/plus-circle.png" alt="">
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card_img" src="food_icon3.PNG" alt="">
+                    <img class="card_img" src="./img/food_icon3.PNG" alt="">
                     <div class="food-title">
-                        <h1>Beef Burger</h1>
+                        <h1 class="font-1">Beef Burger</h1>
                     </div>
                     <div class="desc-food">
-                        <p>Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
+                        <p class="font-2">Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
                     </div>
-                    <div class="price">
-                        <span>$10.99</span><img class="plus-icon" src="plus-circle.png" alt="">
+                    <div class="price font-2">
+                        <span>R$10.99</span><img class="plus-icon" src="./img/plus-circle.png" alt="">
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card_img" src="food_icon4.PNG" alt="">
+                    <img class="card_img" src="./img/food_icon4.PNG" alt="">
                     <div class="food-title">
-                        <h1>Beef Burger</h1>
+                        <h1 class="font-1">Beef Burger</h1>
                     </div>
                     <div class="desc-food">
-                        <p>Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
+                        <p class="font-2">Teste de texto. A melhor opção de hambúrguer para você solicitar</p>
                     </div>
-                    <div class="price">
-                        <span>$10.99</span><img class="plus-icon" src="plus-circle.png" alt="">
+                    <div class="price font-2">
+                        <span>R$10.99</span><img class="plus-icon" src="./img/plus-circle.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 </body>
+
 </html>
