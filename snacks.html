@@ -34,109 +34,56 @@
             </div>
         </div>
         <main>
-            <h1 class="font-1">escolha o melhor para você<span class="point">.</span></h1>
+            <div class="input-container">
+                <div class="title">
+                    <h1 class="font-1">escolha o melhor para você<span class="point">.</span></h1>
+                </div>
+                <div>
+                    <input id="pesquisar" type="text" placeholder="Pesquisar...">
+                    <img class="search-icon" src="./search.svg" alt="">
+                </div>
+            </div>
         </main>
-        <div class="global-container">
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-1.jpg" alt="">
-                    <span class="font-2 bold">R$55,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Pizza de champions</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
+        <div id="lanches-container" class="global-container">
+            <div id="loading">
+                <img src="./img/loading_icon.gif" alt="LOADING GIF">
             </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-10.jpg" alt="">
-                    <span class="font-2 bold">R$45,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Panquecas salgadas</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
-            </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-12.jpg" alt="">
-                    <span class="font-2 bold">R$40,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Tacos</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
-            </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-2.jpg" alt="">
-                    <span class="font-2 bold">R$40,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Hamburguer veg</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
-            </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-3.jpg" alt="">
-                    <span class="font-2 bold">R$40,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Hamburguer de soja</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
-            </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-4.jpg" alt="">
-                    <span class="font-2 bold">R$60,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Combo veg</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
-            </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-8.jpg" alt="">
-                    <span class="font-2 bold">R$40,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Hamburguer de tomate</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
-            </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-7.jpg" alt="">
-                    <span class="font-2 bold">R$45,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Hamburguer integral</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
-            </div>
-            <div class="global-bg">
-                <div class="global-image">
-                    <img src="./img/snacks/snacks-6.jpg" alt="">
-                    <span class="font-2 bold">R$20,00</span>
-                </div>
-                <div class="global-content">
-                    <h2 class="font-1">Torradas</h2>
-                    <p class="font-2 standard">Metade do prato com legumes variados, como brócolis, couve-flor, cenoura
-                        e abobrinha, preparados no vapor ou assados.</p>
-                </div>
+            <div id="notfound" style="display: none;">
+                <h2>Nenhum dado encontrado!</h2>
             </div>
         </div>
 </body>
+<script type="module">
+    import server from "./js/server.js";
+    import { render } from "./js/component.js";
+    const loading = document.getElementById("loading");
+    const notfound = document.getElementById("notfound");
+    const pesquisar = document.getElementById("pesquisar");
+    const container = document.getElementById("lanches-container")
+
+    const getLanches = (filtro) => {
+        container.innerHTML = ""
+        notfound.style.display = 'none'
+        loading.style.display = 'block'
+        container.appendChild(loading)
+        const lanches = server.getByFilter("lanches", filtro)
+        setTimeout(() => {
+            container.innerHTML = ""
+            if (lanches && lanches.length) {
+                lanches.map(lanche => container.appendChild(render(lanche)))
+            } else {
+                notfound.style.display = 'block'
+                container.appendChild(notfound)
+            }
+        }, 1000)
+    }
+
+    pesquisar.addEventListener("keyup", event => getLanches(event.target.value));
+    const lanches = server.get("lanches")
+    setTimeout(() => {
+        container.innerHTML = ""
+        lanches.map(lanche => container.appendChild(render(lanche)))
+    }, 1000)
+</script>
 
 </html>
