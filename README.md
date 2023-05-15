@@ -10,8 +10,8 @@ Esta aplicação está utilizando SQLite3 como SGBD. O diretório database cont�
 
 2 - Instale o PHP 8.0 (pode ser via instalação no seu sistema operacional, ou via plataformas como XAMMP ou WAMP) https://www.php.net/manual/pt_BR/install.php <br/>
 
-3 - Configurar seu PHP para habilitar o PDO do SQLite3:
-3.1 - Descomentar a linha 'extension=pdo_sqlite' do arquivo php.ini
+3 - Configurar seu PHP para habilitar o PDO do SQLite3:<br/>
+3.1 - Descomentar a linha 'extension=pdo_sqlite' do arquivo php.ini<br/>
 3.2 - Instalar a biblioteca 'libsqlite3-0' no seu servidor PHP.
 
 4 - No arquivo js/server.js altere o valor da variável USE_DATABASE para true, caso queira utilizar o banco de dados (o valor false fará com que se utilize os dados do arquivo js/mock.js).
