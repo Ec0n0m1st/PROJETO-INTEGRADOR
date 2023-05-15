@@ -61,12 +61,12 @@
     const pesquisar = document.getElementById("pesquisar");
     const container = document.getElementById("sobremesas-container")
 
-    const getSobremesa = (filtro) => {
+    const getSobremesa = async (filtro) => {
         container.innerHTML = ""
         notfound.style.display = 'none'
         loading.style.display = 'block'
         container.appendChild(loading)
-        const sobremesas = server.getByFilter("sobremesas", filtro)
+        const sobremesas = await server.getByFilter("sobremesas", filtro)
         setTimeout(() => {
             container.innerHTML = ""
             if (sobremesas && sobremesas.length) {
@@ -79,7 +79,7 @@
     }
 
     pesquisar.addEventListener("keyup", event => getSobremesa(event.target.value));
-    const sobremesas = server.get("sobremesas")
+    const sobremesas = await server.get("sobremesas")
     setTimeout(() => {
         container.innerHTML = ""
         sobremesas.map(sobremesa => container.appendChild(render(sobremesa)))

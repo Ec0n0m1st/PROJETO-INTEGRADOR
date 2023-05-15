@@ -15,7 +15,7 @@ export const render = (entity) => {
   const text = template
     .replace("@imagem", entity.imagem)
     .replace("@nome", entity.nome)
-    .replace("@preco", `R$ ${(entity.preco ?? 0).toFixed(2)}`)
+    .replace("@preco", `R$ ${(Number(entity.preco) ?? 0).toFixed(2)}`)
     .replace("@descricao", entity.descricao);
 
   const parser = new DOMParser();

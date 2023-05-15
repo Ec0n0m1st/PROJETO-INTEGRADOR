@@ -61,12 +61,12 @@
     const pesquisar = document.getElementById("pesquisar");
     const container = document.getElementById("lanches-container")
 
-    const getLanches = (filtro) => {
+    const getLanches = async (filtro) => {
         container.innerHTML = ""
         notfound.style.display = 'none'
         loading.style.display = 'block'
         container.appendChild(loading)
-        const lanches = server.getByFilter("lanches", filtro)
+        const lanches = await server.getByFilter("lanches", filtro)
         setTimeout(() => {
             container.innerHTML = ""
             if (lanches && lanches.length) {
@@ -79,7 +79,7 @@
     }
 
     pesquisar.addEventListener("keyup", event => getLanches(event.target.value));
-    const lanches = server.get("lanches")
+    const lanches = await server.get("lanches")
     setTimeout(() => {
         container.innerHTML = ""
         lanches.map(lanche => container.appendChild(render(lanche)))

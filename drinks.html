@@ -61,12 +61,12 @@
     const pesquisar = document.getElementById("pesquisar");
     const container = document.getElementById("bebidas-container")
 
-    const getBebidas = (filtro) => {
+    const getBebidas = async (filtro) => {
         container.innerHTML = ""
         notfound.style.display = 'none'
         loading.style.display = 'block'
         container.appendChild(loading)
-        const bebidas = server.getByFilter("bebidas", filtro)
+        const bebidas = await server.getByFilter("bebidas", filtro)
         setTimeout(() => {
             container.innerHTML = ""
             if (bebidas && bebidas.length) {
@@ -79,7 +79,7 @@
     }
 
     pesquisar.addEventListener("keyup", event => getBebidas(event.target.value));
-    const bebidas = server.get("bebidas")
+    const bebidas = await server.get("bebidas")
     setTimeout(() => {
         container.innerHTML = ""
         bebidas.map(bebida => container.appendChild(render(bebida)))

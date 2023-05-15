@@ -1,5 +1,6 @@
 import mock from "./mock.js";
 
+const USE_DATABASE = false;
 const dbName = "powerplant.database";
 
 const salvar = (db) => localStorage.setItem(dbName, JSON.stringify(db));
@@ -26,23 +27,72 @@ const dropar = (tabela) => {
   localStorage.removeItem(dbName);
 };
 
-const get = (tabela) => {
+const get = async (tabela) => {
   try {
-    const database = carregar();
+    if (USE_DATABASE) {
+      const dados = await fetch(
+        "controller/appHandler.php?" +
+          new URLSearchParams({
+            category: tabela,
+          }),
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then(async (response) => {
+        return await response.json();
+      });
 
-    return database[tabela] ?? [];
+      return dados;
+    } else {
+      const database = carregar();
+      return database[tabela] ?? [];
+    }
   } catch {
     return [];
   }
 };
 
-const getByFilter = (tabela, filtro) => {
+const getByMealName = async (tabela, termoBusca) => {
   try {
-    const rows = get(tabela);
+    const dados = await fetch(
+      "controller/appHandler.php?" +
+        new URLSearchParams({
+          categoryMeal: tabela,
+          term: termoBusca,
+        }),
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(async (response) => {
+      return await response.json();
+    });
 
-    return rows.filter((row) =>
-      row.nome.toUpperCase().includes(filtro.toUpperCase())
-    );
+    return dados;
+  } catch {
+    return [];
+  }
+};
+
+const getByFilter = async (tabela, filtro) => {
+  try {
+    let rows;
+
+    if (USE_DATABASE) {
+      rows = await getByMealName(tabela, filtro);
+    } else {
+      const dados = await get(tabela);
+      rows = dados.filter((row) =>
+        row.nome.toUpperCase().includes(filtro.toUpperCase())
+      );
+    }
+
+    return rows;
   } catch {
     return [];
   }
